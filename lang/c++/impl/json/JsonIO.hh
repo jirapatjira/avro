@@ -29,6 +29,9 @@
 #include "Config.hh"
 #include "Stream.hh"
 
+#include <iostream>    // std::cout, std::fixed
+#include <iomanip>     // std::setprecision
+
 namespace avro {
 namespace json {
 
@@ -313,6 +316,7 @@ public:
     void encodeNumber(double t) {
         sep();
         std::ostringstream oss;
+        oss << std::fixed << std::setprecision(16);
         if (boost::math::isfinite(t)) {
             oss << t;
         } else if (boost::math::isnan(t)) {
